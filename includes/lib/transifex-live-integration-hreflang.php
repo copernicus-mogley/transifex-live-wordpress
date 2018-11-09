@@ -120,8 +120,10 @@ class Transifex_Live_Integration_Hreflang {
 		$url_path = add_query_arg( array(), $wp->request );
 		$source_url_path = (substr( $url_path, 0, strlen( $lang ) ) === $lang) ? substr( $url_path, strlen( $lang ), strlen( $url_path ) ) : $url_path;
 		$source = $this->settings['source_language'];
-		// The problem starts here.
 		$site_url_slash_maybe = site_url();
+//	This line was causing a // in hreflang tag which is bad for SEO
+//		$site_url = rtrim( $site_url_slash_maybe, '/' ) . '/';
+//	The fix is in the following line ...
 		$site_url = rtrim( $site_url_slash_maybe, '/' );
 		$unslashed_source_url = $site_url . $source_url_path;
 		$source_url = rtrim( $unslashed_source_url, '/' ) . '/';
