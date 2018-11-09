@@ -123,7 +123,7 @@ class Transifex_Live_Integration_Hreflang {
 		// The problem starts here.
 		$site_url_slash_maybe = site_url();
 		$site_url = rtrim( $site_url_slash_maybe, '/' );
-		die(print_r($site_url_slash_maybe));
+		die(print_r($site_url));
 		$unslashed_source_url = $site_url . $source_url_path;
 		$source_url = rtrim( $unslashed_source_url, '/' ) . '/';
 		$hreflang_out = '';
