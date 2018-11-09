@@ -127,7 +127,6 @@ class Transifex_Live_Integration_Hreflang {
 		$site_url = rtrim( $site_url_slash_maybe, '/' );
 		$unslashed_source_url = $site_url . $source_url_path;
 		$source_url = rtrim( $unslashed_source_url, '/' ) . '/';
-		die(print_r($source_url));
 		$hreflang_out = '';
 		$hreflang_out .= <<<SOURCE
 <link rel="alternate" href="$source_url" hreflang="$source"/>\n
