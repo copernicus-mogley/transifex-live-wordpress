@@ -122,9 +122,9 @@ class Transifex_Live_Integration_Hreflang {
 		$source = $this->settings['source_language'];
 		// The problem starts here.
 		$site_url_slash_maybe = site_url();
-		$site_url = rtrim( $site_url_slash_maybe, '/' ) . '/';
+		$site_url = rtrim( $site_url_slash_maybe, '/' );
 		$unslashed_source_url = $site_url . $source_url_path;
-		$source_url = rtrim( $unslashed_source_url, '/' );
+		$source_url = rtrim( $unslashed_source_url, '/' ) . '/';
 		die(print_r($source_url));
 		$hreflang_out = '';
 		$hreflang_out .= <<<SOURCE
