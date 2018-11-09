@@ -20,19 +20,19 @@ class Transifex_Live_Integration_Hreflang {
 
 	/*
 	 * A key/value array that maps Transifex locale->plugin code
-	 * @var language_map array 
+	 * @var language_map array
 	 */
 	private $language_map;
 
 	/*
 	 * A list of Transifex locales, for enabled languages
-	 * @var languages array 
+	 * @var languages array
 	 */
 	private $languages;
 
 	/*
 	 * The site_url with a placeholder for language
-	 * @var tokenized_url string 
+	 * @var tokenized_url string
 	 */
 	private $tokenized_url;
 	private $rewrite_options;
@@ -120,13 +120,14 @@ class Transifex_Live_Integration_Hreflang {
 		$url_path = add_query_arg( array(), $wp->request );
 		$source_url_path = (substr( $url_path, 0, strlen( $lang ) ) === $lang) ? substr( $url_path, strlen( $lang ), strlen( $url_path ) ) : $url_path;
 		$source = $this->settings['source_language'];
+		// The problem starts here.
 		$site_url_slash_maybe = site_url();
 		$site_url = rtrim( $site_url_slash_maybe, '/' ) . '/';
 		$unslashed_source_url = $site_url . $source_url_path;
 		$source_url = rtrim( $unslashed_source_url, '/' ) . '/';
 		$hreflang_out = '';
 		$hreflang_out .= <<<SOURCE
-<link rel="alternate" href="$source_url" hreflang="$source"/>\n		
+<link rel="alternate" href="$source_url" hreflang="$source"/>\n
 SOURCE;
 		$hreflangs = $this->generate_languages_hreflang( $source_url_path, $this->languages, $this->language_map, $this->hreflang_map  );
 		foreach ($hreflangs as $hreflang) {
